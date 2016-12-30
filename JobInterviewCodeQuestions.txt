@@ -1,0 +1,19 @@
+Calculate Area: http://www.mathsisfun.com/area.html
+
+Function as a return type
+
+Reverse an array 
+
+Reverse a Dictionary
+
+Do something for every 5th element of an array and Dictionary
+
+Pass a function as an argument
+
+Closure syntax
+
+Delegate pattern
+
+Shuffle an array
+
+

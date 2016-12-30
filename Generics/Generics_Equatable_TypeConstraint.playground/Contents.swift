@@ -13,7 +13,7 @@ var myStrA = "Hello"
 var myStrB = " World!"
 var myStrC = " World!"
 
-func areTheseEqual<T: Equatable>(a: T, b: T) -> Bool {
+func areTheseEqual<T: Equatable>(_ a: T, b: T) -> Bool {
     return a == b // "==" is required by the Equatable protocol
 }
 
@@ -22,3 +22,4 @@ areTheseEqual(myIntC, b: myIntB)
 
 areTheseEqual(myStrA, b: myStrB)
 areTheseEqual(myStrC, b: myStrB)
+

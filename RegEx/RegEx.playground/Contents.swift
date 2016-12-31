@@ -6,31 +6,31 @@ import UIKit
 class Regex: NSObject {
     
     func replace(searchString: String, pattern: String, replacementPattern: String) -> String? {
-        let regex = try! NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
-        let replacedString = regex.stringByReplacingMatchesInString(
-            searchString,
-            options: [.Anchored],
+        let regex = try! NSRegularExpression(pattern: pattern, options: .caseInsensitive)
+        let replacedString = regex.stringByReplacingMatches(
+            in: searchString,
+            options: [.anchored],
             range: NSMakeRange(0, searchString.characters.count - 1),
             withTemplate: replacementPattern)
         return replacedString
     }
     
     func listMatches(pattern: String, inString string: String) -> [String] {
-        let regex = try! NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
+        let regex = try! NSRegularExpression(pattern: pattern, options: .caseInsensitive)
         let strLength = string.characters.count
         let range = NSMakeRange(0, strLength)
-        let matches = regex.matchesInString(string, options: [.Anchored], range: range)
+        let matches = regex.matches(in: string, options: [.anchored], range: range)
         return matches.map {
             let range = $0.range
-            return (string as NSString).substringWithRange(range)
+            return (string as NSString).substring(with: range)
         }
     }
     
     func replaceMatches(pattern: String, inString string: String, withString replacementString: String) -> String? {
-        let regex = try! NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
+        let regex = try! NSRegularExpression(pattern: pattern, options: .caseInsensitive)
         let strLength = string.characters.count
         let range = NSMakeRange(0, strLength)
-        return regex.stringByReplacingMatchesInString(string, options: [.Anchored], range: range, withTemplate: replacementString)
+        return regex.stringByReplacingMatches(in: string, options: [.anchored], range: range, withTemplate: replacementString)
     }
 }
 
@@ -38,9 +38,9 @@ let searchString = "demoGRAPE.html"
 let geoString = "29.8941498,-81.3128801"
 
 let regex = Regex()
-let replaceGEO0 = regex.replace(geoString, pattern: ".*?(?=,)", replacementPattern: "")
-let replaceGEO1 = regex.replace(geoString, pattern: "\\-.*", replacementPattern: "") // "29.8941498,-81.3128801"
-var replaceGEO3 = regex.listMatches("\\-.*", inString: geoString) // "[]"
+let replaceGEO0 = regex.replace(searchString: geoString, pattern: ".*?(?=,)", replacementPattern: "")
+let replaceGEO1 = regex.replace(searchString: geoString, pattern: "\\-.*", replacementPattern: "") // "29.8941498,-81.3128801"
+var replaceGEO3 = regex.listMatches(pattern: "\\-.*", inString: geoString) // "[]"
 
 //let replace1 = regex.replace(searchString, pattern: ".{5}", replacementPattern: "") // "html"
 //let replace2 = regex.replace(searchString, pattern: "demo.", replacementPattern: "") // "RAPE.html"
@@ -56,7 +56,7 @@ var replaceGEO3 = regex.listMatches("\\-.*", inString: geoString) // "[]"
 //let replace7 = regex.replace(searchString, pattern: "^.+?(?=\\.[^.]*$)", replacementPattern: "")
 //let replace8 = regex.replace(searchString, pattern: "\\-.*", replacementPattern: "x")
 //let replace8 = regex.replace(searchString, pattern: "\\..*", replacementPattern: "") // supposed: demoGRAPE actual: "demoGRAPE.html"
-let replace9 = regex.replace(searchString, pattern: "\\.html", replacementPattern: "") // supposed: demoGRAPE actual: "demoGRAPE.html"
+let replace9 = regex.replace(searchString: searchString, pattern: "\\.html", replacementPattern: "") // supposed: demoGRAPE actual: "demoGRAPE.html"
 
 
 

@@ -1,54 +1,18 @@
     import Foundation
     
-//    var quakes = [
-//      "place" : "Oklahoma"
-//    , "place" : "Alaska"
-//    , "place" : "Alaska"
-//    , "place" : "Islands"
-//    , "place" : "Japan"
-//    , "place" : "Rico"
-//    , "place" : "Rico"
-//    , "place" : "Hawaii"
-//    , "place" : "Hawaii"
-//    , "place" : "Alaska"
-//    , "place" : "Chile"
-//    , "place" : "Chile"
-//    , "place" : "Afghanistan"
-//    , "place" : "Indonesia"
-//    , "place" : "Chile"
-//    , "place" : "Rico"
-//    , "place" : "Alaska"
-//    , "place" : "California"
-//    , "place" : "Burma"
-//    , "place" : "Alaska"
-//    , "place" : "Salvador"
-//    , "place" : "Rico"
-//    , "place" : "Rico"
-//    , "place" : "Rico"
-//    , "place" : "Chile"
-//    , "place" : "Rico"
-//    , "place" : "Rico"
-//    , "place" : "Rico"
-//    , "place" : "Rico"
-//    , "place" : "Oklahoma"
-//    , "place" : "Rico"
-//    , "place" : "Rico"
-//    , "place" : "Oklahoma"
-//    , "place" : "Oklahoma"
-//    , "place" : "Alaska"
-//    , "place" : "Rico"
-//    , "place" : "Indonesia"]
+
     
-    print("x")
     
     let arr = [4, 6, 2, 3]
     
-    if (find(arr, 6) != nil) {
+    if arr.contains(6) {
         // found it!
-        println("y")
+        print("y")
     } else {
-        println("n")
+        print("n")
     }
+    
+    
 
     
 //    var arrayOfRegions = [String]()
@@ -82,6 +46,6 @@
 //            let range = $0.range
 //            return (string as NSString).substringWithRange(range)
 //        }
-    }
+//    }
     
-    
+

@@ -13,11 +13,11 @@ extension String {
         print(NSMakeRange(0, self.characters.count - 1))
         let regex = try! NSRegularExpression(
             pattern: pattern,
-            options: [.CaseInsensitive]
+            options: [.caseInsensitive]
         )
-        return regex.stringByReplacingMatchesInString(
-            replacement,
-            options: [.Anchored],
+        return regex.stringByReplacingMatches(
+            in: replacement,
+            options: [.anchored],
             range: NSMakeRange(0, self.characters.count - 1),
             withTemplate: "xx"
         )
@@ -32,17 +32,17 @@ extension String {
     func replace2(pattern: String, replacement: String) -> String {
         let regex = try! NSRegularExpression(
             pattern: pattern,
-            options: [.CaseInsensitive]
+            options: [.caseInsensitive]
         )
-        return regex.stringByReplacingMatchesInString(
-            self,
-            options: [.WithTransparentBounds],
+        return regex.stringByReplacingMatches(
+            in: self,
+            options: [.withTransparentBounds],
             range: NSMakeRange(0, self.characters.count),
             withTemplate: replacement
         )
     }
 }
-let prefix2 = "abc     123".replace2("(\\s+)", replacement: " ")
+let prefix2 = "abc     123".replace2(pattern: "(\\s+)", replacement: " ")
 print(prefix2)
 
 

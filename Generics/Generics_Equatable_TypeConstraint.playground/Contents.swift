@@ -1,6 +1,6 @@
 //: Playground - noun: a place where people can play
 
-/* 24 Hours Pg: 316
+/* 
 The Equatable protocol type constraint works on types and not Dictionaries
 */
 

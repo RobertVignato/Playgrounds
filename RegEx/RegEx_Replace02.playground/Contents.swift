@@ -4,20 +4,19 @@ import UIKit
 
 // Extend the String object with helpers
 extension String {
-    // String.replace(); similar to JavaScript's String.replace() and Ruby's String.gsub()
     func replace(pattern: String, replacement: String) -> String {
         let regex = try! NSRegularExpression(
             pattern: pattern,
-            options: [.CaseInsensitive]
+            options: [.caseInsensitive]
         )
-        return regex.stringByReplacingMatchesInString(
-            self,
-            options: [.WithTransparentBounds],
+        return regex.stringByReplacingMatches(
+            in: self,
+            options: [.withTransparentBounds],
             range: NSMakeRange(0, self.characters.count),
             withTemplate: replacement
         )
     }
 }
-let prefix = "demoGRAPE.html".replace("(\\..*)", replacement: "")
+let prefix = "Index.html".replace(pattern: "(\\..*)", replacement: "")
 print(prefix)
 

@@ -1,4 +1,7 @@
 /*
+ 
+ https://www.reddit.com/r/dailyprogrammer/comments/5e4mde/20161121_challenge_293_easy_defusing_the_bomb/?
+ 
  ========= Description =========
  
  To disarm the bomb you have to cut some wires. These wires are either white, black, purple, red, green or orange.
@@ -47,14 +50,37 @@
  http://www.figure.ink/blog/2015/1/31/swift-state-machines-part-1
  */
 
-class wire {
+struct Wire {
     
-    var white: String {
-        get { return "s"}
-        set (value) { }
+    var whiteWire:String?
+    var whiteCut: String {
+        mutating get {
+            whiteWire = "White Cut!"
+            return whiteWire!
+        }
+        set(valueName) {
+            whiteWire = valueName
+            print("-whiteCut set: \(whiteWire!)")
+        }
+    }
+    
+    var black: String {
+        get {
+            return "Black Cut!"
+        }
+        set(valueName) {
+            
+        }
     }
     
 }
+
+var w = Wire()
+//var c = w.whiteCut
+print(w.whiteCut)
+w.whiteCut = "Uncut"
+//var x = w.whiteCut
+print(w.whiteCut)
 
 //indirect enum Cables {
 //    case Black

@@ -1,5 +1,5 @@
 
- 
+ // https://github.com/raywenderlich/swift-algorithm-club/tree/master/Binary%20Search
 // Divide and conquer
 // 
 // The classic way to speed this up is to use a binary search. The trick is to keep splitting the array in half until the value is found.
@@ -26,6 +26,7 @@ func binarySearch<T: Comparable>(_ a: [T], key: T, range: Range<Int>) -> Int? {
     } else {
         // Calculate where to split the array.
         let midIndex = range.lowerBound + (range.upperBound - range.lowerBound) / 2
+        print("midIndex: \(midIndex)")
         
         // Is the search key in the left half?
         if a[midIndex] > key {
@@ -43,4 +44,51 @@ func binarySearch<T: Comparable>(_ a: [T], key: T, range: Range<Int>) -> Int? {
 }
 
 binarySearch(numbers, key: 43, range: 0 ..< numbers.count)  // gives 13
+
+
+
+//
+//func binarySearch<T: Comparable>(_ data: [T], key T, range: Range<Int>) -> Int? {
+//    if range.lowerBound >= range.upperBound {
+//        return nil
+//    } else {
+//        let midIndex = range.lowerBound + (range.upperBound - range.lowerBound) / 2
+//    }
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

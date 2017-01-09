@@ -9,11 +9,11 @@
  The rules for disarming are simple:
  
  If you cut a white cable you can't cut white or black cable.
- If you cut a red cable you have to cut a green one
- If you cut a black cable it is not allowed to cut a white, green or orange one
- If you cut a orange cable you should cut a red or black one
- If you cut a green one you have to cut a orange or white one
- If you cut a purple cable you can't cut a purple, green, orange or white cable
+ If you cut a red cable you have to cut a green one.
+ If you cut a black cable it is not allowed to cut a white, green or orange one.
+ If you cut a orange cable you should cut a red or black one.
+ If you cut a green one you have to cut a orange or white one.
+ If you cut a purple cable you can't cut a purple, green, orange or white cable.
  If you have anything wrong in the wrong order, the bomb will explode.
  
  There can be multiple wires with the same colour and these instructions are for one wire at a time. Once you cut a wire you can forget about the previous ones.
@@ -50,104 +50,93 @@
  http://www.figure.ink/blog/2015/1/31/swift-state-machines-part-1
  */
 
-struct Wire {
-    
-    var whiteWire:String?
-    var whiteCut: String {
+indirect enum CableType {
+    case Black
+    case White
+    case Red
+    case Orange
+    case Green
+    case Purple
+}
+
+struct Cable {
+
+    var blackStatus: Bool = true
+    var blackCut: Bool {
         mutating get {
-            whiteWire = "White Cut!"
-            return whiteWire!
+            return blackStatus
         }
         set(valueName) {
-            whiteWire = valueName
-            print("-whiteCut set: \(whiteWire!)")
+            return blackStatus = valueName
         }
     }
     
-    var black: String {
-        get {
-            return "Black Cut!"
+    var whiteStatus: Bool = true
+    var whiteCut: Bool {
+        mutating get {
+            return whiteStatus
         }
         set(valueName) {
-            
+            return whiteStatus = valueName
         }
+    }
+
+    mutating func cutCable(cable: CableType) {
+        switch cable {
+        case .Black:
+            if blackStatus == true {
+                blackCut = true
+                blackStatus = false
+                whiteStatus = false
+                bombStatus()
+            }
+            return
+        case .White:
+            if whiteStatus == true {
+                whiteCut = true
+                whiteStatus = false
+                blackStatus = false
+                bombStatus()
+            }
+            return
+        case .Red:
+            print("Red Cut")
+            return
+        case .Orange:
+            print("Orange Cut")
+            return
+        case .Green:
+            print("Green Cut")
+            return
+        case .Purple:
+            print("Purple Cut")
+            return
+        }
+    }
+    
+    mutating func bombStatus() {
+        print("whiteStatus: \(whiteStatus)")
+        print("blackStatus: \(blackStatus)")
+        print("-----------")
     }
     
 }
 
-var w = Wire()
-//var c = w.whiteCut
-print(w.whiteCut)
-w.whiteCut = "Uncut"
-//var x = w.whiteCut
-print(w.whiteCut)
+var cbl = Cable()
+cbl.cutCable(cable: .Black)
+print("b")
+cbl.cutCable(cable: .White)
+print("w")
 
-//indirect enum Cables {
-//    case Black
-//    case White
-//    case Red
-//    case Orange
-//    case Green
-//    case Purple
-//    
-//    func cutCable(cable: Cables) {
-//        
-//        switch cable {
-//        case .Black:
-//            print("Black Cut")
-//            return
-//        case .White:
-//            print("White Cut")
-//            return
-//        case .Red:
-//            print("Red Cut")
-//            return
-//        case .Orange:
-//            print("Orange Cut")
-//            return
-//        case .Green:
-//            print("Green Cut")
-//            return
-//        case .Purple:
-//            print("Purple Cut")
-//            return
-//        }
-//    }
-//}
+// Add elements to an array. After 4 are entered, decide.
 
-//let x = Cables.White
-//print(x)
-//
-//var wiresCutSequence = [String]()
-//
-//var isCutWhite: Bool = false
-//var isCutableWhite: Bool = true
-//var isCutRed: Bool = false
-//var isCutableRed: Bool = true
-//var isCutOrange: Bool = false
-//var isCutableOrange: Bool = true
-//var isCutGreen: Bool = false
-//var isCutableGreen: Bool = true
-//
-//func bombDifuser(snip1: String, snip2: String, snip3: String, snip4: String) -> String {
-//    // Add elements to an array. After 4 are entered, decide.
-//    
-//     // If you cut a white cable you can't cut white or black cable.
-//     // If you cut a red cable you have to cut a green one
-//     // If you cut a black cable it is not allowed to cut a white, green or orange one
-//     // If you cut a orange cable you should cut a red or black one
-//     // If you cut a green one you have to cut a orange or white one
-//     // If you cut a purple cable you can't cut a purple, green, orange or white cable
-//     // If you have anything wrong in the wrong order, the bomb will explode.
-//
-//    return ""
-//}
-
-
-
-//bombDifuser(snip1: "white", snip2: "red", snip3: "green", snip4: "white")
-//bombDifuser(snip1: "white", snip2: "orange", snip3: "green", snip4: "white")
-
+// If you cut a white cable you can't cut white or black cable.
+// If you cut a red cable you have to cut a green one
+// If you cut a black cable it is not allowed to cut a white, green or orange one
+// If you cut a orange cable you should cut a red or black one
+// If you cut a green one you have to cut a orange or white one
+// If you cut a purple cable you can't cut a purple, green, orange or white cable
+// If you have anything wrong in the wrong order, the bomb will explode.
 
 
 
